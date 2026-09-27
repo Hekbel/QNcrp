@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuetzalNexuz Corp | El Alfa & El Omega de la Innovación</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --bg-card: #181820;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --text-light: #e6e6e6;
+            --text-muted: #a0a0b0;
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --glow-gold: rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(10, 10, 12, 0.95);
+            border-bottom: 1px solid var(--border-gold);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-svg {
+            width: 42px;
+            height: 42px;
+        }
+
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0%, rgba(10, 10, 12, 1) 70%);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-logo-large {
+            width: 130px;
+            height: 130px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 50%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gold-primary);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            border: 1px solid var(--gold-primary);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(170, 124, 17, 0.2));
+            color: var(--gold-light);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .cta-button:hover {
+            background: var(--gold-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--gold-primary);
+        }
+
+        .section-tagline {
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* History & Dual Philosophy */
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 2.5rem;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        /* Alfa & Omega Special Banner */
+        .alpha-omega-box {
+            background: linear-gradient(135deg, rgba(24, 24, 32, 0.9), rgba(18, 18, 22, 0.9));
+            border: 1px solid var(--gold-primary);
+            border-radius: 8px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alpha-omega-symbols {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            letter-spacing: 20px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        /* Pillars Grid (Visión, Objetivo, Moral) */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-gold);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+        }
+
+        .pillar-icon {
+            font-size: 2rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.2rem;
+        }
+
+        .pillar-card h3 {
+            color: var(--gold-light);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .pillar-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Leadership Section */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .leader-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 2.5rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .leader-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            background: var(--bg-secondary);
+            color: var(--gold-primary);
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .leader-card h3 {
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .leader-title {
+            color: var(--gold-dark);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .leader-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Subsidiaries Grid */
+        .subsidiaries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .sub-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sub-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold-primary);
+        }
+
+        .sub-card:hover {
+            background: var(--bg-card);
+            border-color: var(--gold-primary);
+        }
+
+        .sub-card h3 {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-category {
+            color: var(--gold-dark);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .sub-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-gold);
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            max-width: 400px;
+            font-size: 0.9rem;
+        }
+
+        .footer-heading {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <!-- Golden Dragon & Lotus Emblem SVG -->
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="46" stroke="url(#goldGradient)" stroke-width="2"/>
+                    <!-- Lotus Base -->
+                    <path d="M50 75 C35 75 25 60 25 50 C35 55 45 65 50 75 Z" fill="url(#goldGradient)" opacity="0.8"/>
+                    <path d="M50 75 C65 75 75 60 75 50 C65 55 55 65 50 75 Z" fill="url(#goldGradient)" opacity="0.8"/>
+                    <path d="M50 75 C40 60 45 45 50 35 C55 45 60 60 50 75 Z" fill="url(#goldGradient)"/>
+                    <!-- Dragon Aura Lines -->
+                    <path d="M30 40 C35 25 50 20 50 20 C50 20 65 25 70 40 C60 30 50 32 50 32 C50 32 40 30 30 40 Z" fill="url(#goldGradient)"/>
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f3e5ab" />
+                            <stop offset="50%" stop-color="#d4af37" />
+                            <stop offset="100%" stop-color="#aa7c11" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="brand-name">QuetzalNexuz Corp</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#alfa-omega">Alfa & Omega</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#liderazgo">Dirección</a></li>
+                <li><a href="#filiales">Filiales</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <svg class="hero-logo-large" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="46" stroke="url(#goldGradientHero)" stroke-width="2.5"/>
+                <!-- Lotus & Dragon Emblem -->
+                <path d="M50 80 C30 80 18 62 18 50 C32 56 44 68 50 80 Z" fill="url(#goldGradientHero)" opacity="0.85"/>
+                <path d="M50 80 C70 80 82 62 82 50 C68 56 56 68 50 80 Z" fill="url(#goldGradientHero)" opacity="0.85"/>
+                <path d="M50 80 C38 62 44 42 50 30 C56 42 62 62 50 80 Z" fill="url(#goldGradientHero)"/>
+                <path d="M25 38 C32 20 50 15 50 15 C50 15 68 20 75 38 C62 26 50 28 50 28 C50 28 38 26 25 38 Z" fill="url(#goldGradientHero)"/>
+                <!-- Central Focus Point -->
+                <circle cx="50" cy="50" r="4" fill="#ffffff"/>
+                <defs>
+                    <linearGradient id="goldGradientHero" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff" />
+                        <stop offset="30%" stop-color="#f3e5ab" />
+                        <stop offset="70%" stop-color="#d4af37" />
+                        <stop offset="100%" stop-color="#aa7c11" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <h1>QUETZALNEXUZ CORPORACIÓN</h1>
+            <div class="hero-subtitle">El Alfa & El Omega de la Innovación Global</div>
+            <p class="hero-description">
+                Un conglomerado multidisciplinario dedicado al análisis financiero, tecnología avanzada, arquitectura digital, ecosistemas de información y desarrollo estratégico integral.
+            </p>
+            <a href="#historia" class="cta-button">EXPLORAR EL ECOSISTEMA</a>
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section id="historia">
+        <div class="section-header">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <div class="section-tagline">Un origen forjado en el rigor, la visión y la resiliencia</div>
+        </div>
+        <div class="history-grid">
+            <div class="card">
+                <p>
+                    <strong>QuetzalNexuz Corp</strong> nació como la convergencia estratégica entre la disciplina analítica, el dominio técnico y la aspiración constante de trascendencia. Inspirada en la mitología de la Serpiente Emplumada —símbolo de elevación, sabiduría y renovación— y la flor de loto —emblema de pureza y resiliencia que florece frente a cualquier adversidad—, la corporación fue establecida para actuar como un nexo central entre múltiples sectores de vanguardia.
+                </p>
+                <p>
+                    Desde sus cimientos, la firma integró el rigor metodológico del mercado financiero global con el desarrollo de software de arquitectura robusta, la auditoría de redes, la optimización de sistemas y el diseño de identidades de marca perdurables.
+                </p>
+            </div>
+            <div class="card">
+                <p>
+                    A lo largo de su evolución, la corporación ha consolidado una infraestructura diversificada bajo la firma directiva <strong>HEKBEL</strong>, extendiendo sus operaciones hacia la educación bursátil, la creación de contenido digital, la ingeniería de sistemas distribuidos y la arquitectura conceptual.
+                </p>
+                <p>
+                    Hoy en día, QuetzalNexuz Corp no solo representa una entidad empresarial, sino un ecosistema autónomo capaz de abarcar el ciclo completo de creación, análisis y ejecución estratégica en mercados complejos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alfa & Omega Section -->
+    <section id="alfa-omega">
+        <div class="alpha-omega-box">
+            <div class="alpha-omega-symbols">A & Ω</div>
+            <h2 style="color: var(--gold-light); margin-bottom: 1rem; letter-spacing: 2px;">LA FILOSOFÍA ALFA & OMEGA</h2>
+            <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto 1.5rem; text-align: center; font-size: 1.05rem;">
+                El principio y el fin. La concepción ideológica y la ejecución definitiva. En QuetzalNexuz Corp, nuestra metodología abarca la totalidad del ciclo operativo: desde el análisis cuantitativo inicial (*Alfa*) hasta la consecución absoluta de la libertad y eficiencia tecnológica (*Omega*).
+            </p>
+            <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2rem;">
+                <div style="max-width: 350px; text-align: left; background: rgba(10,10,12,0.6); padding: 1.5rem; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <h4 style="color: var(--gold-light); margin-bottom: 0.5rem;">ALFA (El Origen)</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Modelado conceptual, captura de liquidez, análisis top-down de precisión (SMC), investigación profunda e innovación sin ataduras.</p>
+                </div>
+                <div style="max-width: 350px; text-align: left; background: rgba(10,10,12,0.6); padding: 1.5rem; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <h4 style="color: var(--gold-light); margin-bottom: 0.5rem;">OMEGA (El Destino)</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Infraestructura técnica autosuficiente, ejecución impecable, soberanía financiera y legado corporativo perdurable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilares: Visión, Objetivo, Moral -->
+    <section id="pilares">
+        <div class="section-header">
+            <h2 class="section-title">Pilares Corporativos</h2>
+            <div class="section-tagline">Nuestra brújula estratégica e ideológica</div>
+        </div>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon">👁️</div>
+                <h3>Visión</h3>
+                <p>
+                    Consolidarse como un conglomerado tecnológico y financiero referente a nivel internacional, reconocido por su capacidad de operar con independencia absoluta, innovación constante y excelencia analítica, transformando datos y estrategias en activos de valor incalculable.
+                </p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">🎯</div>
+                <h3>Objetivo</h3>
+                <p>
+                    Diseñar, desarrollar y gestionar plataformas, estrategias financieras y soluciones tecnológicas autogestionadas de alto impacto que garanticen eficiencia, seguridad cibernética y crecimiento cuantitativo sostenible para la corporación y sus comunidades vinculadas.
+                </p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">⚖️</div>
+                <h3>Moral & Ética</h3>
+                <p>
+                    Operamos bajo un estricto código de disciplina, soberanía individual, lealtad técnica y transparencia estratégica. Creemos en la meritocracia del conocimiento, el respeto por los principios fundamentales de los mercados y el compromiso inquebrantable hacia el dominio analítico.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liderazgo / Dueños -->
+    <section id="liderazgo">
+        <div class="section-header">
+            <h2 class="section-title">Dirección Ejecutiva</h2>
+            <div class="section-tagline">Fundadores y visión de mando</div>
+        </div>
+        <div class="leadership-grid">
+            <div class="leader-card">
+                <div class="leader-avatar">HGB</div>
+                <h3>Héctor José García Belisario</h3>
+                <div class="leader-title">Fundador & Chief Executive Officer (CEO)</div>
+                <p>
+                    Estratega principal, arquitecto conceptual y desarrollador senior de la visión corporativa. Especialista en análisis cuantitativo Smart Money Concepts (SMC), arquitectura de software Android/Linux y dirección general de marca bajo la firma HEKBEL.
+                </p>
+            </div>
+            <div class="leader-card">
+                <div class="leader-avatar">DT</div>
+                <h3>Dirección Estratégica Dream Team</h3>
+                <div class="leader-title">Consejo Consultivo & Análisis Financiero</div>
+                <p>
+                    Cuerpo directivo a cargo de la gestión de comunidades operativas, formación académica bursátil y supervisión de ejecuciones analíticas en los mercados de divisas y activos globales.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filiales & Subsidiarias -->
+    <section id="filiales">
+        <div class="section-header">
+            <h2 class="section-title">Filiales & Divisiones</h2>
+            <div class="section-tagline">El ecosistema integrado de QuetzalNexuz Corp</div>
+        </div>
+        <div class="subsidiaries-grid">
+            <div class="sub-card">
+                <h3>HEKBEL Financial & Analysis</h3>
+                <span class="sub-category">Finanzas & Liquidez Bursátil</span>
+                <p>División especializada en el estudio de Smart Money Concepts (SMC), análisis multi-temporal top-down, mitigación de Order Blocks y gestión estratégica de divisas (EUR/USD).</p>
+            </div>
+            <div class="sub-card">
+                <h3>QuetzalNexuz Labs & Software</h3>
+                <span class="sub-category">Tecnología & Sistemas</span>
+                <p>Unidad de desarrollo de software en Kotlin/Java, kernel tuning, administración de servidores headless Linux (Debian/Alpine) y auditoría de seguridad en redes inalámbricas.</p>
+            </div>
+            <div class="sub-card">
+                <h3>HEKBEL Media & Brand Studio</h3>
+                <span class="sub-category">Identidad Digital & Contenido</span>
+                <p>Estudio creativo a cargo de la producción visual dorada/negra, diseño de marcas, narrativas digitales, SEO y crecimiento estratégico de plataformas digitales.</p>
+            </div>
+            <div class="sub-card">
+                <h3>Dream Team Trading Community</h3>
+                <span class="sub-category">Educación & Análisis en Vivo</span>
+                <p>Comunidad privada de formación bursátil dedicada al análisis institucional de mercados, mentoría colaborativa y desarrollo de disciplina operativa en situaciones críticas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-container">
+                    <svg class="logo-svg" viewBox="0 0 100 100" fill="none" stroke="#d4af37">
+                        <circle cx="50" cy="50" r="44" stroke-width="2"/>
+                        <path d="M50 75 C35 75 25 60 25 50 C35 55 45 65 50 75 Z" fill="#d4af37"/>
+                        <path d="M50 75 C65 75 75 60 75 50 C65 55 55 65 50 75 Z" fill="#d4af37"/>
+                    </svg>
+                    <span class="brand-name">QuetzalNexuz Corp</span>
+                </div>
+                <p>
+                    Corporación global dedicada a la excelencia analítica, independencia tecnológica y desarrollo de infraestructura financiera. Dominio total del Alfa al Omega.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="#historia">Historia Corporativa</a></li>
+                    <li><a href="#alfa-omega">Filosofía Alfa & Omega</a></li>
+                    <li><a href="#pilares">Visión, Objetivo & Moral</a></li>
+                    <li><a href="#liderazgo">Junta Directiva</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Ecosistema</h4>
+                <ul class="footer-links">
+                    <li><a href="#filiales">HEKBEL Financial</a></li>
+                    <li><a href="#filiales">QuetzalNexuz Labs</a></li>
+                    <li><a href="#filiales">Dream Team Trading</a></li>
+                    <li><a href="#filiales">HEKBEL Media Studio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 QuetzalNexuz Corporación. Todos los derechos reservados. Firma Directiva HEKBEL.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
